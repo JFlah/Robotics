@@ -76,9 +76,9 @@ public class Seek {
         
         // Seek
         seek();
-//        Point testSend = new Point(1, 3);
-//        testSend.setHeading(90);
-//        sendQ.add(testSend);
+        //Point testSend = new Point(3, 3);
+        //testSend.setHeading(90);
+        //sendQ.add(testSend);
 
         // Send point of ball to robot
         try {

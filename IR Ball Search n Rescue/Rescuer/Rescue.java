@@ -159,74 +159,34 @@ public class Rescue {
 		int checkCount = 0;
         while (!nav.pathCompleted()) {
         	// NEXT TO THE BALL CHECK
-            if(!nav.pathCompleted() && nav.getWaypoint().getX() == ball.getY()+30 && nav.getWaypoint().getY() == ball.getX() && checkCount < 1){
+            if(!nav.pathCompleted() && nav.getWaypoint().getX() == ball.getY()-30 && nav.getWaypoint().getY() == ball.getX() && checkCount < 1){
             	checkCount++;
             	Sound.playTone(500, 200);
             	nav.stop();
             	if(ball.getHeading() > 0){
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
             		
             		pilot.rotate(-90);
             		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
-            		
-            		Motor.A.rotateTo(360, true);
-            		Motor.B.rotateTo(360);
-            		
-            		Motor.A.waitComplete();
-            		Motor.B.waitComplete();
-            		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
+            		pilot.travel(20);
             		
             		motor.rotate(100);
             		
             		motor.waitComplete();
             		
-            		Motor.A.rotateTo(-360, true);
-            		Motor.B.rotateTo(-360);
-            		
-            		Motor.A.waitComplete();
-            		Motor.B.waitComplete();
-            		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
-            		
-            		pilot.rotate(90);
-            		
+            		pilot.travel(-20);
+
             	} else{
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
             		
             		pilot.rotate(90);
             		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
-            		
-            		Motor.A.rotateTo(360, true);
-            		Motor.B.rotateTo(360);
-            		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
+            		pilot.travel(20);
             		
             		motor.rotate(100);
+            		
             		motor.waitComplete();
             		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
-            		
-            		Motor.A.rotateTo(-360, true);
-            		Motor.B.rotateTo(-360);
-            		
-            		Motor.A.waitComplete();
-            		Motor.B.waitComplete();
-            		
-            		Motor.A.resetTachoCount();
-            		Motor.B.resetTachoCount();
-            		
-            		pilot.rotate(-90);
+            		pilot.travel(-20);
+        		
             	}
             	nav.followPath();
             }
